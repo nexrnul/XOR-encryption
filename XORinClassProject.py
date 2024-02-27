@@ -35,4 +35,23 @@ def XORonByte(byte, key):
 
     return emsg
 
-print(XORonByte("0010", "0011"))
+def XORonLetter(letter, keyLetter):
+
+    letterBin = encode(letter)
+    keyLetterBin = encode(keyLetter)
+    encryptedLetter = XORonByte(letterBin, keyLetterBin)
+    return decode(encryptedLetter)
+#print(XORonLetter("d", "r"))
+
+
+def XORonSentence(sentence, key):
+    
+    encryptedSentence = ""
+
+    for i in range (len(sentence)):
+        
+        encryptedSentence += XORonLetter(sentence[i], key[i])
+    
+    return encryptedSentence
+
+print(XORonSentence("hello", "world"))
